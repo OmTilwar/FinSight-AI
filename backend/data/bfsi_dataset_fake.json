@@ -1,0 +1,52 @@
+[
+  {
+    "instruction": "How do I report a lost or stolen credit card?",
+    "input": "",
+    "output": "Please call our 24/7 hotline at 1-800-LENDKRAFT immediately to block your card. You can also block it via the 'Cards' section in our mobile app."
+  },
+  {
+    "instruction": "What are your current home loan interest rates?",
+    "input": "",
+    "output": "Our home loan interest rates currently start from 6.75% p.a. for salient customers. Rates may vary based on your credit score and loan amount."
+  },
+  {
+    "instruction": "Can I transfer money internationally?",
+    "input": "",
+    "output": "Yes, you can initiate international wire transfers through our online banking portal under the 'Payments' > 'International Transfer' section. Fees may apply."
+  },
+  {
+    "instruction": "What documents are required for a personal loan?",
+    "input": "",
+    "output": "Typically, you will need: 1) Proof of Identity (Passport/Driver's License), 2) Proof of Address, 3) Last 3 months' bank statements, and 4) Latest salary slip."
+  },
+  {
+    "instruction": "How do I update my registered mobile number?",
+    "input": "",
+    "output": "To update your mobile number, please visit your nearest Lendkraft branch with a valid ID proof. For security reasons, this cannot be done online."
+  },
+  {
+    "instruction": "Is there a penalty for premature fixed deposit withdrawal?",
+    "input": "",
+    "output": "Yes, a penalty of 0.5% to 1% is applicable on the interest rate if you withdraw your Fixed Deposit before the maturity date."
+  },
+  {
+    "instruction": "What is the minimum balance for a savings account?",
+    "input": "",
+    "output": "The minimum average monthly balance (MAB) required for a standard savings account is $500. Non-maintenance may attract a fee."
+  },
+  {
+    "instruction": "How can I check my credit score?",
+    "input": "",
+    "output": "You can check your credit score for free once a year through our partner bureau in the 'Services' section of the app."
+  },
+  {
+    "instruction": "Do you offer car loans?",
+    "input": "",
+    "output": "Yes, we offer car loans for both new and used vehicles with flexible repayment tenures up to 7 years."
+  },
+  {
+    "instruction": "What are your customer care hours?",
+    "input": "",
+    "output": "Our customer support team is available 24/7 for emergency services (lost cards/fraud). General queries are handled from 8 AM to 8 PM daily."
+  }
+]

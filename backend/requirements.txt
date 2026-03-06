@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+llama-cpp-python
+python-multipart
+python-dotenv
+scikit-learn
+pinecone==3.1.0
+sentence-transformers
+transformers

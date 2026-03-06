@@ -1,0 +1,243 @@
+:root {
+  --primary-color: #004080;
+  /* Deep Blue */
+  --secondary-color: #0059b3;
+  /* Lighter Blue */
+  --accent-color: #e6f0ff;
+  /* Very Light Blue */
+  --text-dark: #333;
+  --text-light: #fff;
+  --bg-color: #f4f7f6;
+  --message-user-bg: #0059b3;
+  --message-bot-bg: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  height: 100vh;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+}
+
+.chat-header {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 20px;
+  text-align: center;
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+.chat-header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.chat-header p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.chat-window {
+  flex: 1;
+  padding: 20px 0;
+  /* Remove horizontal padding from container */
+  overflow-y: auto;
+  background-color: var(--accent-color);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.message {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  /* Centered column width */
+  margin: 0 auto 5px auto;
+  /* Center the row */
+  padding: 0 20px;
+  /* Inner padding for smaller screens */
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.bot {
+  justify-content: flex-start;
+}
+
+.message-content {
+  max-width: 85%;
+  /* Allow slightly wider bubbles */
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.message.user .message-content {
+  background-color: var(--message-user-bg);
+  color: var(--text-light);
+  border-bottom-right-radius: 2px;
+}
+
+.message.bot .message-content {
+  background-color: var(--message-bot-bg);
+  color: var(--text-dark);
+  border-bottom-left-radius: 2px;
+  border: 1px solid #e0e0e0;
+}
+
+.typing-indicator span {
+  animation: bg-blink 1.4s infinite both;
+  height: 8px;
+  width: 8px;
+  background-color: #555;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 2px;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bg-blink {
+  0% {
+    opacity: 0.2;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.input-area {
+  padding: 20px;
+  background-color: #fff;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: center;
+  /* Center the inner wrapper */
+}
+
+.input-width-limit-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  gap: 10px;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.action-btn {
+  background-color: #f0f4f8;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+
+.mic-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 10px;
+  transition: transform 0.2s;
+}
+
+.mic-btn:hover {
+  transform: scale(1.1);
+}
+
+.mic-btn:active {
+  transform: scale(0.9);
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: var(--primary-color);
+}
+
+button.send-btn {
+  padding: 10px 25px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* General button reset for send button if needed, but keeping existing styles mostly */
+button {
+  padding: 10px 25px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

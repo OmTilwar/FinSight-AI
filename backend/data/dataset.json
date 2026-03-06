@@ -1,0 +1,32 @@
+[
+    {
+        "instruction": "What are your operating hours?",
+        "input": "",
+        "output": "Our branches are open Monday through Friday from 9:00 AM to 5:00 PM. Online banking and customer support are available 24/7."
+    },
+    {
+        "instruction": "What are your working hours?",
+        "input": "",
+        "output": "Our branches are open Monday through Friday from 9:00 AM to 5:00 PM. Online banking and customer support are available 24/7."
+    },
+    {
+        "instruction": "How do I report a lost card?",
+        "input": "",
+        "output": "To report a lost or stolen card, please call our emergency hotline at 1-800-LCARD immediately or lock your card instantly through the mobile app under 'Card Settings'."
+    },
+    {
+        "instruction": "What documents do I need for a personal loan?",
+        "input": "",
+        "output": "For a personal loan application, you generally need: 1. Proof of Identity (Passport/Driver's License), 2. Proof of Address (Utility Bill), and 3. Proof of Income (Recent Payslips or Bank Statements)."
+    },
+    {
+        "instruction": "How can I check my credit score?",
+        "input": "",
+        "output": "You can check your credit score for free within our mobile banking app under the 'Financial Wellness' section. This service does not impact your credit score."
+    },
+    {
+        "instruction": "What is the interest rate for a savings account?",
+        "input": "",
+        "output": "Our standard savings account currently offers an Annual Percentage Yield (APY) of 1.5%. High-yield savings accounts are available with rates up to 4.25% APY based on balance requirements."
+    }
+]
