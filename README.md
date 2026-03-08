@@ -32,6 +32,7 @@ FinSight AI intelligently routes user queries through four distinct processing l
     *   **Result**: Extracts the verified policy text and feeds it to the SLM as hard context.
 *   **Tier 4: The SLM (Local Generation)**
     *   **How it works**: A quantized **Llama-3-8B** model running completely locally via `llama-cpp-python` streams the final reasoned answer back to the frontend UI.
+    *   **Fine-Tuning**: This SLM was explicitly fine-tuned on our specialized `bfsi_dataset.json` (Banking, Financial Services, and Insurance Q&A) to ensure it naturally understands banking jargon, loan processes, and policy constraints out of the box.
 
 ---
 
