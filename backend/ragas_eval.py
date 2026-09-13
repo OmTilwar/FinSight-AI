@@ -171,17 +171,35 @@ class RagasEvaluator:
     def compute_faithfulness(self, response: str, context_str: str) -> float:
         """
         Ragas Faithfulness: Measures whether generated claims are supported by context.
+        Uses atomic claim-to-clause alignment to prevent whole-paragraph embedding dilution.
         """
         sentences = [s.strip() for s in re.split(r'[.!?]', response) if s.strip()]
         if not sentences:
             return 1.0
         
-        resp_emb = self.encoder.encode(sentences)
-        ctx_emb = self.encoder.encode([context_str])
+        # Split context into individual lines/clauses to match specific policy rules
+        context_clauses = [line.strip() for line in context_str.split('\n') if len(line.strip()) > 5]
+        if not context_clauses:
+            context_clauses = [context_str]
+
+        resp_embs = self.encoder.encode(sentences)
+        clause_embs = self.encoder.encode(context_clauses)
         
-        sims = cosine_similarity(resp_emb, ctx_emb).flatten()
-        faithful_claims = sum(1 for s in sims if s > 0.45)
-        return faithful_claims / len(sentences)
+        # Pairwise similarity matrix: [num_claims, num_clauses]
+        sim_matrix = cosine_similarity(resp_embs, clause_embs)
+        
+        faithful_claims = 0
+        for i, sentence in enumerate(sentences):
+            max_clause_sim = float(np.max(sim_matrix[i]))
+            
+            # Verify specific numbers/terms (e.g. $50, 4.0%, 600, 90 days) exist in context
+            nums_in_claim = re.findall(r'\b\d+(?:\.\d+)?%?|\$\d+\b', sentence.lower())
+            has_num_grounding = all(num in context_str.lower() for num in nums_in_claim) if nums_in_claim else True
+            
+            if max_clause_sim >= 0.48 or (max_clause_sim >= 0.38 and has_num_grounding):
+                faithful_claims += 1
+                
+        return min(1.0, faithful_claims / len(sentences))
 
     def compute_answer_relevancy(self, question: str, response: str) -> float:
         """

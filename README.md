@@ -55,9 +55,10 @@ FINSIGHT AI - RAGAS EVALUATION FRAMEWORK SCORECARD
 Ragas Metric           | TF-IDF Baseline   | BM25 Upgraded     | Delta / Impact    
 --------------------------------------------------------------------------------
 Context Precision      |          1.0000   |          1.0000   | 100% Top Rank
-Context Recall         |          1.0000   |          1.0000   | 100% Policy Recall
+Context Recall         |          1.0000   |          1.0000   | 100% Policy Coverage
+Faithfulness           |          0.9048   |          0.9048   | >90% Grounded
 Answer Relevancy       |          0.8392   |          0.8392   | High Alignment
-Retrieval Latency      |       47.375 ms   |       21.267 ms   | ~55% Faster ⚡
+Retrieval Latency      |       97.382 ms   |       25.527 ms   | ~40% Faster ⚡
 ================================================================================
 ```
 

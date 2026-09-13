@@ -1,12 +1,12 @@
 {
-    "timestamp": "2026-09-13 13:30:37",
+    "timestamp": "2026-09-13 13:39:54",
     "tfidf_pipeline": {
         "pipeline": "tfidf",
         "context_precision": 1.0,
         "context_recall": 1.0,
-        "faithfulness": 0.6428571428571429,
+        "faithfulness": 0.9047619047619048,
         "answer_relevancy": 0.8392145548548017,
-        "latency_ms": 47.37467142487211,
+        "latency_ms": 97.38238571610835,
         "details": [
             {
                 "id": "TC-01",
@@ -37,7 +37,7 @@
                 "question": "What is the penalty if an EMI is paid late and when does it become an NPA?",
                 "context_precision": 1.0,
                 "context_recall": 1.0,
-                "faithfulness": 0.5,
+                "faithfulness": 1.0,
                 "answer_relevancy": 0.8091425597667694
             },
             {
@@ -45,7 +45,7 @@
                 "question": "Which documents are accepted as address proof for loan applications?",
                 "context_precision": 1.0,
                 "context_recall": 1.0,
-                "faithfulness": 0.0,
+                "faithfulness": 1.0,
                 "answer_relevancy": 0.7128426432609558
             },
             {
@@ -61,7 +61,7 @@
                 "question": "What interest rate is offered for variable home loans?",
                 "context_precision": 1.0,
                 "context_recall": 1.0,
-                "faithfulness": 0.6666666666666666,
+                "faithfulness": 1.0,
                 "answer_relevancy": 0.8162366151809692
             }
         ]
@@ -70,9 +70,9 @@
         "pipeline": "bm25",
         "context_precision": 1.0,
         "context_recall": 1.0,
-        "faithfulness": 0.5952380952380952,
+        "faithfulness": 0.9047619047619048,
         "answer_relevancy": 0.8392145548548017,
-        "latency_ms": 21.267214282748423,
+        "latency_ms": 25.526514285177523,
         "details": [
             {
                 "id": "TC-01",
@@ -103,7 +103,7 @@
                 "question": "What is the penalty if an EMI is paid late and when does it become an NPA?",
                 "context_precision": 1.0,
                 "context_recall": 1.0,
-                "faithfulness": 0.5,
+                "faithfulness": 1.0,
                 "answer_relevancy": 0.8091425597667694
             },
             {
@@ -111,7 +111,7 @@
                 "question": "Which documents are accepted as address proof for loan applications?",
                 "context_precision": 1.0,
                 "context_recall": 1.0,
-                "faithfulness": 0.0,
+                "faithfulness": 1.0,
                 "answer_relevancy": 0.7128426432609558
             },
             {
@@ -127,7 +127,7 @@
                 "question": "What interest rate is offered for variable home loans?",
                 "context_precision": 1.0,
                 "context_recall": 1.0,
-                "faithfulness": 0.3333333333333333,
+                "faithfulness": 1.0,
                 "answer_relevancy": 0.8162366151809692
             }
         ]
