@@ -1,0 +1,135 @@
+{
+    "timestamp": "2026-09-13 13:30:37",
+    "tfidf_pipeline": {
+        "pipeline": "tfidf",
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "faithfulness": 0.6428571428571429,
+        "answer_relevancy": 0.8392145548548017,
+        "latency_ms": 47.37467142487211,
+        "details": [
+            {
+                "id": "TC-01",
+                "question": "What is the prepayment penalty for personal loans?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 1.0,
+                "answer_relevancy": 0.8617090880870819
+            },
+            {
+                "id": "TC-02",
+                "question": "What fee applies for home loan foreclosures within the first year?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 1.0,
+                "answer_relevancy": 0.9041746556758881
+            },
+            {
+                "id": "TC-03",
+                "question": "What are the eligibility criteria and minimum credit score for a personal loan?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 1.0,
+                "answer_relevancy": 0.8923860490322113
+            },
+            {
+                "id": "TC-04",
+                "question": "What is the penalty if an EMI is paid late and when does it become an NPA?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 0.5,
+                "answer_relevancy": 0.8091425597667694
+            },
+            {
+                "id": "TC-05",
+                "question": "Which documents are accepted as address proof for loan applications?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 0.0,
+                "answer_relevancy": 0.7128426432609558
+            },
+            {
+                "id": "TC-06",
+                "question": "What is the interest rate range for car loans at FinSight?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 0.3333333333333333,
+                "answer_relevancy": 0.8780102729797363
+            },
+            {
+                "id": "TC-07",
+                "question": "What interest rate is offered for variable home loans?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 0.6666666666666666,
+                "answer_relevancy": 0.8162366151809692
+            }
+        ]
+    },
+    "bm25_pipeline": {
+        "pipeline": "bm25",
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "faithfulness": 0.5952380952380952,
+        "answer_relevancy": 0.8392145548548017,
+        "latency_ms": 21.267214282748423,
+        "details": [
+            {
+                "id": "TC-01",
+                "question": "What is the prepayment penalty for personal loans?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 1.0,
+                "answer_relevancy": 0.8617090880870819
+            },
+            {
+                "id": "TC-02",
+                "question": "What fee applies for home loan foreclosures within the first year?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 1.0,
+                "answer_relevancy": 0.9041746556758881
+            },
+            {
+                "id": "TC-03",
+                "question": "What are the eligibility criteria and minimum credit score for a personal loan?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 1.0,
+                "answer_relevancy": 0.8923860490322113
+            },
+            {
+                "id": "TC-04",
+                "question": "What is the penalty if an EMI is paid late and when does it become an NPA?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 0.5,
+                "answer_relevancy": 0.8091425597667694
+            },
+            {
+                "id": "TC-05",
+                "question": "Which documents are accepted as address proof for loan applications?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 0.0,
+                "answer_relevancy": 0.7128426432609558
+            },
+            {
+                "id": "TC-06",
+                "question": "What is the interest rate range for car loans at FinSight?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 0.3333333333333333,
+                "answer_relevancy": 0.8780102729797363
+            },
+            {
+                "id": "TC-07",
+                "question": "What interest rate is offered for variable home loans?",
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "faithfulness": 0.3333333333333333,
+                "answer_relevancy": 0.8162366151809692
+            }
+        ]
+    }
+}

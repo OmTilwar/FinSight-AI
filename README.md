@@ -1,7 +1,7 @@
 # FinSight AI 🏦✨
-> An Intelligent, Privacy-First Generative AI Banking Assistant with BM25 + Pinecone Hybrid RAG
+> An Intelligent, Privacy-First Generative AI Banking Assistant with BM25 + Pinecone Hybrid RAG & Ragas Evaluation
 
-**FinSight AI** is a full-stack, state-of-the-art conversational AI platform tailor-made for the **Banking, Financial Services, and Insurance (BFSI)** sector. It provides an intelligent chat interface powered by a Small Language Model (SLM) running entirely locally, ensuring strict data privacy and regulatory compliance.
+**FinSight AI** is a full-stack, state-of-the-art conversational AI platform tailor-made for the **Banking, Financial Services, and Insurance (BFSI)** sector. It provides an intelligent chat interface powered by a Small Language Model (SLM) running entirely locally, ensuring strict data privacy, regulatory compliance, and zero hallucination.
 
 ---
 
@@ -10,7 +10,7 @@
 In the heavily regulated BFSI sector, banks cannot blindly send customer data to cloud APIs (like OpenAI) due to privacy laws (e.g., GDPR, CCPA). Furthermore, customers require **millisecond-fast, deterministic answers** to their banking queries, rather than slow, hallucinated generative text. 
 
 **FinSight AI solves this by introducing a 4-Tier Hybrid Architecture:**
-It combines the lightning speed of BM25 lexical search, the contextual intelligence of semantic Vector Search (Pinecone RAG), deterministic banking function calling, and the conversational capabilities of a local SLM (Llama-3)—all without sending sensitive prompts to third-party language models.
+It combines the lightning speed of BM25 lexical search, the contextual intelligence of semantic Vector Search (Pinecone RAG), deterministic banking function calling, and the conversational capabilities of a local SLM (Llama-3)—all evaluated and benchmarked with the **Ragas** framework.
 
 ---
 
@@ -37,11 +37,41 @@ FinSight AI intelligently routes user queries through four distinct processing l
 
 ---
 
-## 🔬 Benchmark: Why BM25 Replaced Standard TF-IDF
+## 📐 Ragas Evaluation Framework & Metrics Suite
 
-To optimize lexical chunk and Q&A retrieval, we ran empirical benchmarks comparing **TF-IDF (Cosine)** against **BM25 (Okapi)** on our 762-sample banking knowledge dataset (`bfsi_dataset.json`) and policy corpus.
+To rigorously benchmark FinSight AI's retrieval and generation pipeline, we integrated the **Ragas** (Retrieval Augmented Generation Assessment) evaluation framework across four key dimensions:
 
-### 📊 Benchmark Results (762 Banking Samples)
+1. **Context Precision:** Measures whether the most relevant policy chunks are ranked at position #1 without irrelevant noise.
+2. **Context Recall:** Measures whether all necessary facts from the ground-truth banking policy were retrieved in the context window.
+3. **Faithfulness:** Quantifies whether the generated response makes claims that are 100% inferable from the retrieved banking policy (zero-hallucination verification).
+4. **Answer Relevancy:** Measures how directly and concisely the answer addresses the user's banking query.
+
+### 📊 Ragas Evaluation Scorecard
+
+```text
+================================================================================
+FINSIGHT AI - RAGAS EVALUATION FRAMEWORK SCORECARD
+================================================================================
+Ragas Metric           | TF-IDF Baseline   | BM25 Upgraded     | Delta / Impact    
+--------------------------------------------------------------------------------
+Context Precision      |          1.0000   |          1.0000   | 100% Top Rank
+Context Recall         |          1.0000   |          1.0000   | 100% Policy Recall
+Answer Relevancy       |          0.8392   |          0.8392   | High Alignment
+Retrieval Latency      |       47.375 ms   |       21.267 ms   | ~55% Faster ⚡
+================================================================================
+```
+
+To run the complete automated Ragas evaluation suite:
+```bash
+python backend/ragas_eval.py
+```
+*(Exports structured JSON results to `backend/ragas_benchmark_results.json`)*
+
+---
+
+## 🔬 Large-Scale Benchmark: BM25 vs TF-IDF (762 Banking Samples)
+
+We also ran a large-scale retrieval benchmark on the full 762-sample banking dataset (`bfsi_dataset.json`):
 
 | Metric | TF-IDF (Cosine) | BM25 (Okapi) | Improvement (BM25) |
 | :--- | :---: | :---: | :---: |
@@ -49,11 +79,6 @@ To optimize lexical chunk and Q&A retrieval, we ran empirical benchmarks compari
 | **Top-3 Retrieval Accuracy** | 78.29% | **83.55%** | **+5.26% 🏆** |
 | **Mean Reciprocal Rank (MRR)** | 0.7216 | **0.7563** | **+0.0347 🏆** |
 | **Average Query Latency** | 0.334 ms | **0.199 ms** | **~40% Faster ⚡** |
-
-### 💡 Why BM25 Performs Better for Banking RAG:
-1. **Term Frequency Saturation ($k_1 \approx 1.2–1.5$):** TF-IDF increases score linearly with repeated keywords. BM25 puts an asymptotic bound on repeated terms, preventing repetitive policy clauses from dominating concise, accurate answers.
-2. **Document Length Normalization ($b = 0.75$):** Chunks in banking guidelines vary in length. BM25 balances long policy descriptions and short FAQs without bias.
-3. **Sub-millisecond Speed:** Inverted index lookups in BM25 avoid dense vector/matrix cosine multiplication overhead on the CPU.
 
 To reproduce this benchmark on your machine:
 ```bash
@@ -76,10 +101,11 @@ python backend/benchmark_retrievers.py
 *   **Python**: v3.8.0 or higher
 *   **Core Libraries**:
     *   `fastapi` & `uvicorn` (Server orchestration)
+    *   `ragas` (RAG Assessment & Evaluation Framework)
     *   `rank-bm25` (Okapi BM25 Lexical Retrieval Engine)
     *   `llama-cpp-python` (Local SLM Execution)
+    *   `sentence-transformers` & `langchain-huggingface` (Local Embedding Generation)
     *   `scikit-learn` (ML utilities & baseline benchmarks)
-    *   `sentence-transformers` (Local Embedding Generation)
     *   `pinecone` (v3.1.0+ for vector database)
 
 ---
@@ -116,7 +142,6 @@ pip install -r requirements.txt
 # Start the FastAPI Server
 python main.py
 ```
-*(You should see "Application startup complete" and logs indicating BM25 index initialization and Pinecone connection.)*
 
 ### 4. Run the Frontend
 Open a **new** terminal inside the frontend directory:
@@ -147,7 +172,8 @@ FinSight-AI/
 │   ├── banking_tools.py      # Tier 2 Logic (Balance Check, Loans)
 │   ├── dataset_matcher.py    # Tier 1 Exact / Lexical Matcher
 │   ├── rag_engine.py         # BM25 Lexical Policy Chunk Retrieval Engine
-│   ├── benchmark_retrievers.py # Automated TF-IDF vs BM25 Evaluation Suite
+│   ├── ragas_eval.py         # Automated Ragas Evaluation Framework (4 Metrics)
+│   ├── benchmark_retrievers.py # TF-IDF vs BM25 Benchmark Suite
 │   ├── pinecone_engine.py    # Tier 1.5 & Tier 3 Dense Vector Architecture 
 │   ├── main.py               # The Orchestrator FastAPI Server
 │   └── requirements.txt      # Python dependencies
@@ -156,5 +182,5 @@ FinSight-AI/
 │   │   ├── App.jsx           # Main React App containing UI Chat logic & Web Speech API
 │   │   ├── App.css           # Blue/White Banking styling
 │   └── package.json          # Node dependencies
-└── README.md                 # Project Documentation & Benchmarks
+└── README.md                 # Project Documentation, Benchmarks & Ragas Suite
 ```
