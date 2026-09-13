@@ -5,6 +5,7 @@ llama-cpp-python
 python-multipart
 python-dotenv
 scikit-learn
+rank-bm25
 pinecone==3.1.0
 sentence-transformers
 transformers
